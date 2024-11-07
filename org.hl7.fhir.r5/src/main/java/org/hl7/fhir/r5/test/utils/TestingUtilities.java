@@ -43,7 +43,7 @@ import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.cache.PackageCacheManager;
 import org.hl7.fhir.utilities.cache.ToolsVersion;
-
+import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -239,7 +239,7 @@ public class TestingUtilities {
   }
 
   private static Document loadXml(InputStream fn) throws Exception {
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilderFactory factory = XMLUtil.newXXEProtectedDocumentBuilderFactory();
       factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
       factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
       factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);

@@ -28,6 +28,7 @@ import org.hl7.fhir.utilities.validation.ValidationMessage;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
 import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
+import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -117,7 +118,7 @@ public class XmlValidator {
   }
 
   public Element checkBySchema(String fileToCheck, boolean wantThrow) throws FileNotFoundException, SAXException, IOException, ParserConfigurationException, FHIRException {
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilderFactory factory = XMLUtil.newXXEProtectedDocumentBuilderFactory();
     factory.setNamespaceAware(true);
     factory.setValidating(false);
     factory.setSchema(schema);
@@ -145,7 +146,7 @@ public class XmlValidator {
         throw new FHIRException("Error validating " + filename + " with schematrons", e);
     }
 
-    factory = DocumentBuilderFactory.newInstance();
+    factory = XMLUtil.newXXEProtectedDocumentBuilderFactory();
     factory.setNamespaceAware(true);
     builder = factory.newDocumentBuilder();
     doc = builder.parse(new ByteArrayInputStream(out));

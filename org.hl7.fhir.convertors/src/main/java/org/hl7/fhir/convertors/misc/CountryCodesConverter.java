@@ -353,7 +353,7 @@ public class CountryCodesConverter {
   }
 
   private Document load() throws ParserConfigurationException, FileNotFoundException, SAXException, IOException {
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilderFactory factory = XMLUtil.newXXEProtectedDocumentBuilderFactory();
     factory.setNamespaceAware(true);
     DocumentBuilder builder = factory.newDocumentBuilder();
 

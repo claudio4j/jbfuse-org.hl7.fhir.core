@@ -337,7 +337,7 @@ public class ISO21090Importer {
   }
 
   private void load() throws ParserConfigurationException, FileNotFoundException, SAXException, IOException {
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilderFactory factory = XMLUtil.newXXEProtectedDocumentBuilderFactory();
     factory.setNamespaceAware(false);
     DocumentBuilder builder = factory.newDocumentBuilder();
     Document doc = builder.parse(new FileInputStream("C:\\work\\projects\\org.hl7.v3.dt\\iso\\iso-21090-datatypes.xsd"));

@@ -121,7 +121,7 @@ public class CKMImporter {
 
 		InputStream xml = connection.getInputStream();
 
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilderFactory dbf = XMLUtil.newXXEProtectedDocumentBuilderFactory();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		return db.parse(xml);
 	}

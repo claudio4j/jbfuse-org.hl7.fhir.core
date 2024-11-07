@@ -125,7 +125,7 @@ public class ADLImporter {
 
 	private void execute() throws Exception {
 	  // load config
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilderFactory factory = XMLUtil.newXXEProtectedDocumentBuilderFactory();
 		factory.setNamespaceAware(true);
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		adlConfig = builder.parse(new FileInputStream(config)).getDocumentElement();

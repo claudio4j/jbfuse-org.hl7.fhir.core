@@ -69,7 +69,7 @@ public class CDAUtilities {
 	private Document doc;
 
 	public CDAUtilities(InputStream stream) throws Exception {
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilderFactory factory = XMLUtil.newXXEProtectedDocumentBuilderFactory();
 		factory.setNamespaceAware(true);
 		DocumentBuilder builder = factory.newDocumentBuilder();
 
